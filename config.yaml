@@ -1,0 +1,288 @@
+units:
+  # Proxy Spacing Variables
+  kx: cx
+  ky: cy
+  # Padding Variables
+  px: kx + 4
+  py: ky + 4
+
+  pushX: (kx / 2)
+  pushY: (ky / 2)
+
+  padX: pushX + 2
+  padY: pushY + 2
+
+points:
+  zones:
+    matrix:
+      key:
+        padding: 1ky
+        spread: 1kx
+      columns:
+        outer:
+          rows.mod.skip: false
+          key:
+            stagger: 0
+            column_net: P017
+        pinky:
+          rows.mod.skip: false
+          key:
+            stagger: 0
+            column_net: P011
+        ring:
+          key:
+            stagger: 7
+            column_net: P100
+        middle:
+          key:
+            stagger: 5
+            column_net: P024
+        index:
+          key:
+            stagger: -6
+            column_net: P022
+        inner:
+          rows:
+            mod.skip: true
+            bottom.skip: true
+          key:
+            stagger: -3
+            column_net: P020
+      rows:
+        mod:
+          row_net: P113
+        bottom:
+          row_net: P115
+        home:
+          row_net: P002
+        top:
+          row_net: P029
+        num:
+          row_net: P031
+      anchor:
+        shift: [100, -150]
+    thumbs:
+      key:
+        padding: 1ky
+        spread: 1.1kx
+      anchor:
+        ref: matrix_inner_mod
+        shift: [2, -2]
+      columns:
+        layer:
+          key:
+            splay: -15
+            column_net: P104
+        space:
+          key:
+            splay: -5
+            column_net: P106
+      rows:
+        cluster:
+          key.row_net: P110
+        other:
+          key.row_net: P010
+  mirror: &mirror
+    ref: matrix_inner_num
+    distance: 5kx
+
+outlines:
+  raw:
+    - what: rectangle
+      where: true
+      size: [px, py]
+  keys:
+    - what: rectangle
+      where: true
+      size: [kx-0.7,ky-0.7]
+      # size: [14, 14]
+      fillet: 0
+
+  rightboard:
+    - what: polygon
+      operation: stack
+      fillet: 2
+      points:
+        - ref: mirror_matrix_inner_num
+          shift: [0.5px,0.5py]
+        - ref: mirror_matrix_middle_num
+          shift: [0.5px,0.5py]
+        - ref: mirror_matrix_middle_num
+          shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_ring_num
+          shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_outer_num
+          shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_outer_mod
+          shift: [-0.5px,-0.5py]
+        - ref: mirror_matrix_middle_mod
+          shift: [0px,-1py]
+        - ref: mirror_thumbs_layer_cluster
+          shift: [-0.5px,-0.5py]
+        - ref: mirror_thumbs_space_cluster
+          shift: [0.5px,-0.5py]
+        - ref: mirror_thumbs_space_other
+          shift: [0.5px, 0.5px]
+        - ref: mirror_matrix_inner_home
+          shift: [0.5px, -0.2px]
+
+  leftboard:
+    - what: polygon
+      operation: stack
+      fillet: 2
+      points:
+        - ref: matrix_outer_num
+          shift: [-0.5px,0.5py]
+        - ref: matrix_ring_num
+          shift: [-0.5px,0.5py]
+        - ref: matrix_middle_num
+          shift: [-0.5px,0.5py]
+        - ref: matrix_middle_num
+          shift: [0.5px,0.5py]
+        - ref: matrix_inner_num
+          shift: [0.5px,0.5py]
+        - ref: matrix_inner_home
+          shift: [0.5px, -0.2px]
+        - ref: thumbs_space_other
+          shift: [0.5px, 0.5px]
+        - ref: thumbs_space_cluster
+          shift: [0.5px,-0.5py]
+        - ref: thumbs_layer_cluster
+          shift: [-0.5px,-0.5py]
+        - ref: matrix_middle_mod
+          shift: [0px,-1py]
+        - ref: matrix_outer_mod
+          shift: [-0.5px,-0.5py]
+      
+  board:
+    - what: polygon
+      operation: stack
+      fillet: 2
+      points:
+        - ref: matrix_outer_num
+          shift: [-0.5px,0.5py]
+        - ref: matrix_ring_num
+          shift: [-0.5px,0.5py]
+        - ref: matrix_middle_num
+          shift: [-0.5px,0.5py]
+        - ref: matrix_middle_num
+          shift: [0.5px,0.5py]
+        - ref: matrix_inner_num
+          shift: [0.5px,0.5py]
+        - ref: mirror_matrix_inner_num
+          shift: [0.5px,0.5py]
+        - ref: mirror_matrix_middle_num
+          shift: [0.5px,0.5py]
+        - ref: mirror_matrix_middle_num
+          shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_ring_num
+          shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_outer_num
+          shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_outer_mod
+          shift: [-0.5px,-0.5py]
+        - ref: mirror_matrix_middle_mod
+          shift: [0px,-1py]
+        - ref: mirror_thumbs_layer_cluster
+          shift: [-0.5px,-0.5py]
+        - ref: mirror_thumbs_space_cluster
+          shift: [0.75px,-0.5py]
+        - ref: thumbs_space_cluster
+          shift: [0.75px,-0.5py]
+        - ref: thumbs_layer_cluster
+          shift: [-0.5px,-0.5py]
+        - ref: matrix_middle_mod
+          shift: [0px,-1py]
+        - ref: matrix_outer_mod
+          shift: [-0.5px,-0.5py]
+
+  combobody:
+    - name: board
+    - operation: subtract
+      name: keys
+  comboleft:
+    - name: leftboard
+    - operation: subtract
+      name: keys
+  comboright:
+    - name: rightboard
+    - operation: subtract
+      name: keys
+  
+pcbs:
+  left:
+    outlines:
+      main:
+        outline: leftboard
+    footprints:
+      nice_nano:
+        what: nice_nano
+        params:
+          orientation: up
+        where:
+          ref: matrix_inner_num
+          shift: [-9, -1.5]
+          rotate: -180.0
+      choc_hotswap:
+        what: choc
+        where: /^(matrix_|thumbs_).*/
+        params:
+          keycaps: true
+          reverse: false
+          hotswap: true
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+        adjust:
+          rotate: 180
+      default_diode:
+        what: diode
+        where: /^(matrix_(?!(?:outer_|ring_))|thumbs_).*/
+        params: 
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [7.8, -3.0]
+          rotate: 90
+      ringouter_diode:
+        what: diode
+        where: /^(matrix_(?:outer_|ring_)).*/
+        params: 
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [0, 5.0]
+          rotate: 180
+  right:
+    outlines:
+      main:
+        outline: rightboard
+    footprints:
+      choc_hotswap:
+        what: choc
+        where: /^(matrix_|thumbs_).*/
+        params:
+          keycaps: true
+          reverse: false
+          hotswap: true
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+        adjust:
+          rotate: 180
+      default_diode:
+        what: diode
+        where: /^(mirror_matrix_(?!(?:ring_|outer_))|mirror_thumbs_).*/
+        params: 
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [7.8, -3.0]
+          rotate: 90
+      ringouter_diode:
+        what: diode
+        where: /^(mirror_matrix_(?:outer_|ring_)).*/
+        params: 
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [0, 5.0]
+          rotate: 180
