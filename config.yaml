@@ -12,12 +12,14 @@ units:
   padX: pushX + 2
   padY: pushY + 2
 
+  spacing: 0.75
+
 points:
   zones:
     matrix:
       key:
-        padding: 1ky
-        spread: 1kx
+        padding: 1ky + spacing
+        spread: 1kx + spacing
       columns:
         outer:
           rows.mod.skip: false
@@ -63,8 +65,8 @@ points:
         shift: [100, -150]
     thumbs:
       key:
-        padding: 1ky
-        spread: 1.1kx
+        padding: 1ky + spacing
+        spread: 1.1kx + spacing
       anchor:
         ref: matrix_inner_mod
         shift: [2, -2]
@@ -215,14 +217,6 @@ pcbs:
       main:
         outline: leftboard
     footprints:
-      nice_nano:
-        what: nice_nano
-        params:
-          orientation: up
-        where:
-          ref: matrix_inner_num
-          shift: [-9, -1.5]
-          rotate: -180.0
       choc_hotswap:
         what: choc
         where: /^(matrix_|thumbs_).*/
@@ -234,24 +228,79 @@ pcbs:
           to: "{{colrow}}"
         adjust:
           rotate: 180
+
+      # Micro Controller
+      nice_nano:
+        what: nice_nano
+        params:
+          orientation: up
+        where:
+          ref: matrix_inner_num
+          shift: [-8.3, -1.5]
+          rotate: -180.0
+
+      # Battery Jack
+      jstph:
+        what: jstph
+        where:
+          ref: matrix_middle_home
+          shift: [-7, 5.5]
+          rotate: 90
+        params:
+            side: B
+            pos: pos
+            neg: GND
+
+      # Reset switch (horizontal community version)
+      horizontal_reset:
+        what: EVQPUC
+        params: 
+          side: B
+          from: GND
+          to: RST 
+        where:
+          ref: matrix_inner_num
+          shift: [10, 7]
+          rotate: 0
+      # Battery on/off switch
+      battery_switch:
+        what: slider
+        where:
+            ref: matrix_inner_num
+            shift: [-5, 10]
+            rotate: 0
+        params:
+            side: B
+            from: pos
+            to: RAW
+
       default_diode:
         what: diode
-        where: /^(matrix_(?!(?:outer_|ring_))|thumbs_).*/
+        where: /^(matrix_(?!(?:outer_|ring_|index_))|thumbs_).*/
         params: 
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
           shift: [7.8, -3.0]
           rotate: 90
-      ringouter_diode:
+      weird_diode:
         what: diode
-        where: /^(matrix_(?:outer_|ring_)).*/
+        where: /^(matrix_(?:outer_|ring_|index_(?!(?:top)))).*/
         params: 
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
-          shift: [0, 5.0]
+          shift: [0, 6.0]
           rotate: 180
+      martixindextop:
+        what: diode
+        where: /^(matrix_index_(?:top)).*/
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [7.68, -3.0]
+          rotate: 90
   right:
     outlines:
       main:
@@ -259,7 +308,7 @@ pcbs:
     footprints:
       choc_hotswap:
         what: choc
-        where: /^(matrix_|thumbs_).*/
+        where: /^(mirror_matrix_|mirror_thumbs_).*/
         params:
           keycaps: true
           reverse: false
@@ -268,18 +317,65 @@ pcbs:
           to: "{{colrow}}"
         adjust:
           rotate: 180
+      # Micro Controller
+      nice_nano:
+        adjust:
+          rotate: 180.0
+        what: nice_nano
+        params:
+          orientation: up
+        where:
+          ref: mirror_matrix_inner_num
+          shift: [-8.3, -1.5]
+          rotate: -180.0
+
+      # Battery Jack
+      jstph:
+        what: jstph
+        where:
+          ref: mirror_matrix_middle_home
+          shift: [-7, 5.5]
+          rotate: 90
+        params:
+            side: B
+            pos: pos
+            neg: GND
+
+      # Reset switch (horizontal community version)
+      horizontal_reset:
+        what: EVQPUC
+        params: 
+          side: B
+          from: GND
+          to: RST 
+        where:
+          ref: mirror_matrix_inner_top
+          shift: [9.0, 2.8]
+          rotate: -90.0
+      # Battery on/off switch
+      battery_switch:
+        what: slider
+        where:
+            ref: mirror_matrix_inner_top
+            shift: [8.8, -12.0]
+            rotate: -90
+        params:
+            side: B
+            from: pos
+            to: RAW
+
       default_diode:
         what: diode
-        where: /^(mirror_matrix_(?!(?:ring_|outer_))|mirror_thumbs_).*/
+        where: /^(mirror_matrix_(?!(?:ring_|outer_|pinky_))|mirror_thumbs_).*/
         params: 
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
-          shift: [7.8, -3.0]
+          shift: [-7.8, -3.0]
           rotate: 90
-      ringouter_diode:
+      weird_diode:
         what: diode
-        where: /^(mirror_matrix_(?:outer_|ring_)).*/
+        where: /^(mirror_matrix_(?:outer_|ring_|pinky_)).*/
         params: 
           from: "{{colrow}}"
           to: "{{row_net}}"
