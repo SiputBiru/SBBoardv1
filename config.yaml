@@ -260,14 +260,14 @@ pcbs:
           to: RST
         where:
           ref: matrix_inner_num
-          shift: [2, 10]
+          shift: [0, 11.2]
           rotate: -14
       # Battery on/off switch
       battery_switch:
         what: slider
         where:
           ref: matrix_inner_num
-          shift: [-8, 12]
+          shift: [-10, 13.75]
           rotate: -14
         params:
           side: B
@@ -296,7 +296,7 @@ pcbs:
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
-          shift: [0, 8.0]
+          shift: [0, 6.0]
           rotate: -180
       martixindextop:
         what: diode
@@ -366,14 +366,14 @@ pcbs:
           to: RST
         where:
           ref: mirror_matrix_inner_num
-          shift: [9.0, 2.8]
+          shift: [0, 11.2]
           rotate: -14.0
       # Battery on/off switch
       battery_switch:
         what: slider
         where:
           ref: mirror_matrix_inner_num
-          shift: [8.8, -12.0]
+          shift: [-10, 13.75]
           rotate: -14
         params:
           side: B
