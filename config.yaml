@@ -96,7 +96,7 @@ outlines:
   keys:
     - what: rectangle
       where: true
-      size: [kx-0.7,ky-0.7]
+      size: [kx-0.7, ky-0.7]
       # size: [14, 14]
       fillet: 0
 
@@ -106,23 +106,23 @@ outlines:
       fillet: 2
       points:
         - ref: mirror_matrix_inner_num
-          shift: [0.5px,0.5py]
+          shift: [0.5px, 0.5py]
         - ref: mirror_matrix_middle_num
-          shift: [0.5px,0.5py]
+          shift: [0.5px, 0.5py]
         - ref: mirror_matrix_middle_num
-          shift: [-0.5px,0.5py]
+          shift: [-0.5px, 0.5py]
         - ref: mirror_matrix_ring_num
-          shift: [-0.5px,0.5py]
+          shift: [-0.5px, 0.5py]
         - ref: mirror_matrix_outer_num
-          shift: [-0.5px,0.5py]
+          shift: [-0.5px, 0.5py]
         - ref: mirror_matrix_outer_mod
-          shift: [-0.5px,-0.5py]
+          shift: [-0.5px, -0.5py]
         - ref: mirror_matrix_middle_mod
-          shift: [0px,-1py]
+          shift: [0px, -1py]
         - ref: mirror_thumbs_layer_cluster
-          shift: [-0.5px,-0.5py]
+          shift: [-0.5px, -0.5py]
         - ref: mirror_thumbs_space_cluster
-          shift: [0.5px,-0.5py]
+          shift: [0.5px, -0.5py]
         - ref: mirror_thumbs_space_other
           shift: [0.5px, 0.5px]
         - ref: mirror_matrix_inner_home
@@ -134,69 +134,69 @@ outlines:
       fillet: 2
       points:
         - ref: matrix_outer_num
-          shift: [-0.5px,0.5py]
+          shift: [-0.5px, 0.5py]
         - ref: matrix_ring_num
-          shift: [-0.5px,0.5py]
+          shift: [-0.5px, 0.5py]
         - ref: matrix_middle_num
-          shift: [-0.5px,0.5py]
+          shift: [-0.5px, 0.5py]
         - ref: matrix_middle_num
-          shift: [0.5px,0.5py]
+          shift: [0.5px, 0.5py]
         - ref: matrix_inner_num
-          shift: [0.5px,0.5py]
+          shift: [0.5px, 0.5py]
         - ref: matrix_inner_home
           shift: [0.5px, -0.2px]
         - ref: thumbs_space_other
           shift: [0.5px, 0.5px]
         - ref: thumbs_space_cluster
-          shift: [0.5px,-0.5py]
+          shift: [0.5px, -0.5py]
         - ref: thumbs_layer_cluster
-          shift: [-0.5px,-0.5py]
+          shift: [-0.5px, -0.5py]
         - ref: matrix_middle_mod
-          shift: [0px,-1py]
+          shift: [0px, -1py]
         - ref: matrix_outer_mod
-          shift: [-0.5px,-0.5py]
-      
+          shift: [-0.5px, -0.5py]
+
   board:
     - what: polygon
       operation: stack
       fillet: 2
       points:
         - ref: matrix_outer_num
-          shift: [-0.5px,0.5py]
+          shift: [-0.5px, 0.5py]
         - ref: matrix_ring_num
-          shift: [-0.5px,0.5py]
+          shift: [-0.5px, 0.5py]
         - ref: matrix_middle_num
-          shift: [-0.5px,0.5py]
+          shift: [-0.5px, 0.5py]
         - ref: matrix_middle_num
-          shift: [0.5px,0.5py]
+          shift: [0.5px, 0.5py]
         - ref: matrix_inner_num
-          shift: [0.5px,0.5py]
+          shift: [0.5px, 0.5py]
         - ref: mirror_matrix_inner_num
-          shift: [0.5px,0.5py]
+          shift: [0.5px, 0.5py]
         - ref: mirror_matrix_middle_num
-          shift: [0.5px,0.5py]
+          shift: [0.5px, 0.5py]
         - ref: mirror_matrix_middle_num
-          shift: [-0.5px,0.5py]
+          shift: [-0.5px, 0.5py]
         - ref: mirror_matrix_ring_num
-          shift: [-0.5px,0.5py]
+          shift: [-0.5px, 0.5py]
         - ref: mirror_matrix_outer_num
-          shift: [-0.5px,0.5py]
+          shift: [-0.5px, 0.5py]
         - ref: mirror_matrix_outer_mod
-          shift: [-0.5px,-0.5py]
+          shift: [-0.5px, -0.5py]
         - ref: mirror_matrix_middle_mod
-          shift: [0px,-1py]
+          shift: [0px, -1py]
         - ref: mirror_thumbs_layer_cluster
-          shift: [-0.5px,-0.5py]
+          shift: [-0.5px, -0.5py]
         - ref: mirror_thumbs_space_cluster
-          shift: [0.75px,-0.5py]
+          shift: [0.75px, -0.5py]
         - ref: thumbs_space_cluster
-          shift: [0.75px,-0.5py]
+          shift: [0.75px, -0.5py]
         - ref: thumbs_layer_cluster
-          shift: [-0.5px,-0.5py]
+          shift: [-0.5px, -0.5py]
         - ref: matrix_middle_mod
-          shift: [0px,-1py]
+          shift: [0px, -1py]
         - ref: matrix_outer_mod
-          shift: [-0.5px,-0.5py]
+          shift: [-0.5px, -0.5py]
 
   combobody:
     - name: board
@@ -210,7 +210,7 @@ outlines:
     - name: rightboard
     - operation: subtract
       name: keys
-  
+
 pcbs:
   left:
     outlines:
@@ -236,7 +236,7 @@ pcbs:
           orientation: up
         where:
           ref: matrix_inner_num
-          shift: [-8.3, -1.5]
+          shift: [-9, -1.5]
           rotate: -180.0
 
       # Battery Jack
@@ -247,37 +247,43 @@ pcbs:
           shift: [-7, 5.5]
           rotate: 90
         params:
-            side: B
-            pos: pos
-            neg: GND
+          side: B
+          pos: pos
+          neg: GND
 
       # Reset switch (horizontal community version)
       horizontal_reset:
         what: EVQPUC
-        params: 
+        params:
           side: B
           from: GND
-          to: RST 
+          to: RST
         where:
           ref: matrix_inner_num
-          shift: [10, 7]
-          rotate: 0
+          shift: [2, 10]
+          rotate: -14
       # Battery on/off switch
       battery_switch:
         what: slider
         where:
-            ref: matrix_inner_num
-            shift: [-5, 10]
-            rotate: 0
+          ref: matrix_inner_num
+          shift: [-8, 12]
+          rotate: -14
         params:
-            side: B
-            from: pos
-            to: RAW
+          side: B
+          from: pos
+          to: RAW
+      
+      hole_center:
+        what: mountinghole
+        where:
+          ref: matrix_middle_bottom
+          shift: [-pushX, pushY]
 
       default_diode:
         what: diode
-        where: /^(matrix_(?!(?:outer_|ring_|index_))|thumbs_).*/
-        params: 
+        where: /^(matrix_(?!(?:outer_|ring_|index_|inner_top))|thumbs_).*/
+        params:
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
@@ -286,12 +292,12 @@ pcbs:
       weird_diode:
         what: diode
         where: /^(matrix_(?:outer_|ring_|index_(?!(?:top)))).*/
-        params: 
+        params:
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
-          shift: [0, 6.0]
-          rotate: 180
+          shift: [0, 8.0]
+          rotate: -180
       martixindextop:
         what: diode
         where: /^(matrix_index_(?:top)).*/
@@ -301,6 +307,16 @@ pcbs:
         adjust:
           shift: [7.68, -3.0]
           rotate: 90
+      martixinnertop:
+        what: diode
+        where: /^(matrix_inner_(?:top)).*/
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [0, 6.0]
+          rotate: -180
+
   right:
     outlines:
       main:
@@ -326,7 +342,7 @@ pcbs:
           orientation: up
         where:
           ref: mirror_matrix_inner_num
-          shift: [-8.3, -1.5]
+          shift: [-9, -1.5]
           rotate: -180.0
 
       # Battery Jack
@@ -337,37 +353,43 @@ pcbs:
           shift: [-7, 5.5]
           rotate: 90
         params:
-            side: B
-            pos: pos
-            neg: GND
+          side: B
+          pos: pos
+          neg: GND
 
       # Reset switch (horizontal community version)
       horizontal_reset:
         what: EVQPUC
-        params: 
+        params:
           side: B
           from: GND
-          to: RST 
+          to: RST
         where:
-          ref: mirror_matrix_inner_top
+          ref: mirror_matrix_inner_num
           shift: [9.0, 2.8]
-          rotate: -90.0
+          rotate: -14.0
       # Battery on/off switch
       battery_switch:
         what: slider
         where:
-            ref: mirror_matrix_inner_top
-            shift: [8.8, -12.0]
-            rotate: -90
+          ref: mirror_matrix_inner_num
+          shift: [8.8, -12.0]
+          rotate: -14
         params:
-            side: B
-            from: pos
-            to: RAW
+          side: B
+          from: pos
+          to: RAW
+
+      hole_center:
+        what: mountinghole
+        where:
+          ref: mirror_matrix_middle_bottom
+          shift: [-pushX, pushY - 4]
 
       default_diode:
         what: diode
         where: /^(mirror_matrix_(?!(?:ring_|outer_|pinky_))|mirror_thumbs_).*/
-        params: 
+        params:
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
@@ -376,7 +398,7 @@ pcbs:
       weird_diode:
         what: diode
         where: /^(mirror_matrix_(?:outer_|ring_|pinky_)).*/
-        params: 
+        params:
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
