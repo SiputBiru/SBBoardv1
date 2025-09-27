@@ -260,7 +260,7 @@ pcbs:
           to: RST
         where:
           ref: matrix_inner_num
-          shift: [0, 11.2]
+          shift: [-20, 16]
           rotate: -14
       # Battery on/off switch
       # battery_switch:
@@ -379,7 +379,7 @@ pcbs:
           to: RST
         where:
           ref: mirror_matrix_inner_num
-          shift: [0, 11.2]
+          shift: [-20, 16]
           rotate: -14.0
       # Battery on/off switch
       # battery_switch:
@@ -398,7 +398,7 @@ pcbs:
         where:
           ref: mirror_matrix_inner_num
           shift: [-10, 13.7]
-          rotate: 76
+          rotate: -104
         params:
           side: B
           from: pos
