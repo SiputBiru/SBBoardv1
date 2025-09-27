@@ -278,7 +278,7 @@ pcbs:
         what: power_switch_smd_side
         where:
           ref: matrix_inner_num
-          shift: [-10, 13.2]
+          shift: [-10, 13.7]
           rotate: 76
         params:
           side: B
@@ -397,7 +397,7 @@ pcbs:
         what: power_switch_smd_side
         where:
           ref: mirror_matrix_inner_num
-          shift: [-10, 13.2]
+          shift: [-10, 13.7]
           rotate: 76
         params:
           side: B
