@@ -25,42 +25,42 @@ points:
           rows.mod.skip: false
           key:
             stagger: 0
-            column_net: P017
+            column_net: P011
         pinky:
           rows.mod.skip: false
           key:
             stagger: 0
-            column_net: P011
+            column_net: P100
         ring:
           key:
             stagger: 7
-            column_net: P100
+            column_net: P024
         middle:
           key:
             stagger: 5
-            column_net: P024
+            column_net: P022
         index:
           key:
             stagger: -6
-            column_net: P022
+            column_net: P020
         inner:
           rows:
             mod.skip: true
             bottom.skip: true
           key:
             stagger: -3
-            column_net: P020
+            column_net: P017
       rows:
         mod:
-          row_net: P113
+          row_net: P111
         bottom:
-          row_net: P115
+          row_net: P113
         home:
-          row_net: P002
+          row_net: P015
         top:
-          row_net: P029
+          row_net: P002
         num:
-          row_net: P031
+          row_net: P029
       anchor:
         shift: [100, -150]
     thumbs:
@@ -74,16 +74,16 @@ points:
         layer:
           key:
             splay: -15
-            column_net: P104
+            column_net: P017
         space:
           key:
             splay: -5
-            column_net: P106
+            column_net: P031
       rows:
         cluster:
-          key.row_net: P110
+          row_net: P111
         other:
-          key.row_net: P010
+          row_net: P113
   mirror: &mirror
     ref: matrix_inner_num
     distance: 5kx
@@ -263,12 +263,23 @@ pcbs:
           shift: [0, 11.2]
           rotate: -14
       # Battery on/off switch
+      # battery_switch:
+      #   what: slider
+      #   where:
+      #     ref: matrix_inner_num
+      #     shift: [-10, 13.2]
+      #     rotate: -14
+      #   params:
+      #     side: B
+      #     from: pos
+      #     to: RAW
+
       battery_switch:
-        what: slider
+        what: power_switch_smd_side
         where:
           ref: matrix_inner_num
-          shift: [-10, 13.75]
-          rotate: -14
+          shift: [-10, 13.2]
+          rotate: 76
         params:
           side: B
           from: pos
@@ -282,7 +293,7 @@ pcbs:
 
       default_diode:
         what: diode
-        where: /^(matrix_(?!(?:outer_|ring_|index_|inner_top))|thumbs_).*/
+        where: /^(matrix_(?!(?:outer_|ring_|index_|pinky_))|thumbs_).*/
         params:
           from: "{{colrow}}"
           to: "{{row_net}}"
@@ -291,7 +302,7 @@ pcbs:
           rotate: 90
       weird_diode:
         what: diode
-        where: /^(matrix_(?:outer_|ring_|index_(?!(?:top)))).*/
+        where: /^(matrix_(?:outer_|ring_|index_(?!(?:top))|pinky_)).*/
         params:
           from: "{{colrow}}"
           to: "{{row_net}}"
@@ -307,15 +318,17 @@ pcbs:
         adjust:
           shift: [7.68, -3.0]
           rotate: 90
-      martixinnertop:
-        what: diode
-        where: /^(matrix_inner_(?:top)).*/
-        params:
-          from: "{{colrow}}"
-          to: "{{row_net}}"
-        adjust:
-          shift: [0, 6.0]
-          rotate: -180
+      front_text: &text
+        what: text
+        where: &textWhere
+            ref: matrix_middle_mod
+            shift: [-26.7, -17.5]
+        params: &textParams
+            text: SBBoardv1
+            justify: left
+            h_size: 3.0
+            v_size: 3.0
+            thickness: 0.4
 
   right:
     outlines:
@@ -369,17 +382,28 @@ pcbs:
           shift: [0, 11.2]
           rotate: -14.0
       # Battery on/off switch
-      battery_switch:
-        what: slider
+      # battery_switch:
+      #   what: slider
+      #   where:
+      #     ref: mirror_matrix_inner_num
+      #     shift: [-10, 13.2]
+      #     rotate: -14
+      #   params:
+      #     side: B
+      #     from: pos
+      #     to: RAW
+
+      battery_switch_2:
+        what: power_switch_smd_side
         where:
           ref: mirror_matrix_inner_num
-          shift: [-10, 13.75]
-          rotate: -14
+          shift: [-10, 13.2]
+          rotate: 76
         params:
           side: B
           from: pos
           to: RAW
-
+          
       hole_center:
         what: mountinghole
         where:
@@ -404,3 +428,14 @@ pcbs:
         adjust:
           shift: [0, 5.0]
           rotate: 180
+      front_text: &text
+        what: text
+        where: &textWhere
+            ref: mirror_matrix_middle_mod
+            shift: [-2.7, -17.5]
+        params: &textParams
+            text: SBBoardv1
+            justify: left
+            h_size: 3.0
+            v_size: 3.0
+            thickness: 0.4
