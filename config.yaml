@@ -252,8 +252,18 @@ pcbs:
           neg: GND
 
       # Reset switch (horizontal community version)
+      # horizontal_reset:
+      #   what: EVQPUC
+      #   params:
+      #     side: B
+      #     from: GND
+      #     to: RST
+      #   where:
+      #     ref: matrix_inner_num
+      #     shift: [-20, 16]
+      #     rotate: -14
       horizontal_reset:
-        what: EVQPUC
+        what: side_switch_TS-A002
         params:
           side: B
           from: GND
@@ -371,8 +381,19 @@ pcbs:
           neg: GND
 
       # Reset switch (horizontal community version)
+      # horizontal_reset:
+      #   what: EVQPUC
+      #   params:
+      #     side: B
+      #     from: GND
+      #     to: RST
+      #   where:
+      #     ref: mirror_matrix_inner_num
+      #     shift: [-20, 16]
+      #     rotate: -14.0
+
       horizontal_reset:
-        what: EVQPUC
+        what: side_switch_TS-A002
         params:
           side: B
           from: GND
@@ -381,6 +402,8 @@ pcbs:
           ref: mirror_matrix_inner_num
           shift: [-20, 16]
           rotate: -14.0
+
+     
       # Battery on/off switch
       # battery_switch:
       #   what: slider
