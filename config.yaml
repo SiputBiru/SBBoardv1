@@ -263,7 +263,7 @@ pcbs:
       #     shift: [-20, 16]
       #     rotate: -14
       horizontal_reset:
-        what: side_switch_TS-A002
+        what: side_switch_TSA002
         params:
           side: B
           from: GND
@@ -393,7 +393,7 @@ pcbs:
       #     rotate: -14.0
 
       horizontal_reset:
-        what: side_switch_TS-A002
+        what: side_switch_TSA002
         params:
           side: B
           from: GND
