@@ -1,7 +1,7 @@
 units:
   # Proxy Spacing Variables
-  kx: cx
-  ky: cy
+  kx: 18
+  ky: 17
   # Padding Variables
   px: kx + 4
   py: ky + 4
@@ -12,7 +12,7 @@ units:
   padX: pushX + 2
   padY: pushY + 2
 
-  spacing: 0.75
+  spacing: 0
 
 points:
   zones:
@@ -89,6 +89,7 @@ points:
     distance: 5kx
 
 outlines:
+  
   raw:
     - what: rectangle
       where: true
@@ -211,6 +212,22 @@ outlines:
     - operation: subtract
       name: keys
 
+  plate_hole:
+    - what: rectangle
+      where: true
+      size: 14
+      fillet: 0
+  plate_left:
+    - name: leftboard
+      expand: 3        
+    - name: plate_hole
+      operation: subtract
+  plate_right:
+    - name: rightboard
+      expand: 3
+    - name: plate_hole
+      operation: subtract
+
 pcbs:
   left:
     outlines:
@@ -296,6 +313,12 @@ pcbs:
           to: RAW
       
       hole_center:
+        what: mountinghole
+        where:
+          ref: matrix_middle_bottom
+          shift: [-pushX, pushY]
+
+      hole_new:
         what: mountinghole
         where:
           ref: matrix_middle_bottom
@@ -462,3 +485,10 @@ pcbs:
             h_size: 3.0
             v_size: 3.0
             thickness: 0.4
+cases:
+  left_plate:
+    - name: plate_left
+      extrude: 1.5
+  right_plate:
+    - name: plate_right
+      extrude: 1.5
