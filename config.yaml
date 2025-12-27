@@ -56,7 +56,7 @@ points:
         bottom:
           row_net: P113
         home:
-          row_net: P015
+          row_net: P115
         top:
           row_net: P002
         num:
